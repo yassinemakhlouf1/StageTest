@@ -1,16 +1,9 @@
-import React from "react";
-import Select from 'react-select'
+import React from 'react'
 
-
-export default function Products() {
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
-      
-      const MyComponent = () => (
-        <Select options={options} />
-      
-  );
+function products() {
+  return (
+    <div>products</div>
+  )
 }
+
+export default products

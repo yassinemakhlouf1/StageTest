@@ -1,18 +1,13 @@
 import React from "react"
+import './ProductCard.css';
 
 export default function ProductCard({title, imageUrl, price}) {
     return (
-      <div className='card-container'>
-          <div className='image-container'>
-              <img src={imageUrl} alt=''/>
-          </div>
-          <div className='product-name'>
-              <h4>title</h4>
-          </div>
-          <div className='product-price>'>
-              <p>price</p>
-          </div>
-      </div>
-    )
-  }
-  
+<div class='card' className='card-container'>
+        <img className='image-container' src={imageUrl} alt=''  />
+        <div className="content-container">
+            <label class='title'>{title}</label>
+            <label class='price'>{price}</label>
+</div>
+</div>
+    )}
