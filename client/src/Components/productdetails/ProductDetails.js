@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css';
+import './ProdDetail.css';
 export default function ProductDetails() {
   return (
     <div className='Product-container'>
