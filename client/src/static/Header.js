@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Header.css";
 export default function Header() {
+  const [selected, setSelected] = useState('€');
+  // const handleChange = (event: SelectChangeEvent) => {
+  //   setSelected(event.target.value);
+  // };
   return (
    
   
   <>
       <div className='app-head'>
         <div>
-        <div >Women</div>
-        <div id='p1'>Man</div>
-        <div id='p1'>kids</div>
+        <a class="active"  href='' >Women</a>
+        <a href='' id='p1'>Man</a>
+        <a href='' id='p1'>kids</a>
         </div>
         
         <div>
-       <img src="Greenicon.png" alt="" />
+       <img src="/Greenicon.png" alt="" />
         </div>
-        <select >
-            <option value="USD">$ USD</option>
-            <option value="EUR">€ EUR</option>
-            <option value="JPY">¥ JPY</option>
-        </select>
-      </div>
-    <div className='test'>
+        <div >
+          <div>{selected}</div>
+          <select onChange={(e)=>setSelected(e.target.value[0])} value={'None'} className="selectH">
 
-    </div>
+            <option  value="None"></option>
+            <option  value="$"><em>$ USD</em></option>
+            <option value="€" selected>€ EUR</option>
+            <option value="¥"  >¥ JPY</option>
+        </select>
+        <img src="/Vector.png" alt=""/>
+        </div>
+      </div>
   
     </>
 
