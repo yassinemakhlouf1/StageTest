@@ -11,7 +11,7 @@ export default function Header() {
   <>
       <div className='app-head'>
         <div>
-        <a class="active"  href='' >Women</a>
+        <a className="active"  href='' >Women</a>
         <a href='' id='p1'>Man</a>
         <a href='' id='p1'>kids</a>
         </div>
@@ -24,8 +24,8 @@ export default function Header() {
           <select onChange={(e)=>setSelected(e.target.value[0])} value={'None'} className="selectH">
 
             <option  value="None"></option>
-            <option  value="$"><em>$ USD</em></option>
-            <option value="€" selected>€ EUR</option>
+            <option  value="$">$ USD</option>
+            <option value="€" >€ EUR</option>
             <option value="¥"  >¥ JPY</option>
         </select>
         <img src="/Vector.png" alt=""/>
