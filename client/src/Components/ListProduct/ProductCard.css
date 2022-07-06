@@ -152,16 +152,16 @@
     padding-top: 2%;
     padding-bottom: 2%;
     font-weight: 400;
-font-size: 42px;
-line-height: 160%;
-/* identical to box height, or 67px */
+    font-size: 42px;
+    line-height: 160%;
+    /* identical to box height, or 67px */
 
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 
-/* --c-text */
+    /* --c-text */
 
-color: #1D1F22;
+    color: #1D1F22;
 
 }
 
