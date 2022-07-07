@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./style.css";
 export default function Cart() {
   const [count, setCount] = useState(1);
+  const [count1, setCount1] = useState(1);
 var left= '<';
 var right='>';
 
@@ -68,9 +69,9 @@ var right='>';
       </div>
       <div className='container-right-c'>
       <div className='container-nb'>
-      <div><button className='buttonC' onClick={() => setCount(count + 1)}>+</button>
-      <p className='pCart'>{count}</p>
-      <button className='buttonC' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button></div>
+      <div><button className='buttonC' onClick={() => setCount1(count1 + 1)}>+</button>
+      <p className='pCart'>{count1}</p>
+      <button className='buttonC' onClick={() => {if (count1>0 ) setCount1(count1 - 1)}}>-</button></div>
     </div>
     <div className="image-containerC">
       <img src="/ProductGhaith.png" alt=""/>
@@ -83,18 +84,18 @@ var right='>';
     
     </div>
     <div className='total'>
-    <div className='aa'>
+    <div className='total-r'>
     <div className='txt1'>Tax 21%:</div>
     <div className='txt1'>Quantity:</div>
     <div className='txt1'>Total:</div>
     </div>
-    <div className='aa'>
+    <div className='total-r mt-l' >
     <div className='txt'>$42.00 </div>
     <div className='txt'>3</div>
     <div className='txt'>$2000</div>
     </div>
     </div>
-    <button className='button'>ORDER</button>
+    <button className='button mr-t'>ORDER</button>
     </div>
   )
 }
