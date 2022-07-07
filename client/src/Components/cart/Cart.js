@@ -31,9 +31,9 @@ var right='>';
       </div>
       <div className='container-right-c'>
       <div className='container-nb'>
-      <div><button className='buttonC' onClick={() => setCount(count + 1)}>+</button>
+      <button className='buttonC' onClick={() => setCount(count + 1)}>+</button>
       <p className='pCart'>{count}</p>
-      <button className='buttonC' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button></div>
+      <button className='buttonC ' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button>
     </div>
     <div className="image-containerC">
       <img src="/ProductGhaith.png" alt=""/>
