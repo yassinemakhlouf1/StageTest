@@ -7,15 +7,17 @@ export default function ProductDetails() {
   }
 
   return (
-    <div className="Product-container">
-    <div>
+    <div className="Product-container cartt" >
+      <div >
+    <div className="itheb ">
       <div className="image-containerr"><img src="/Product.png" alt=""/></div>
       <div className="image-containerr"><img src="/Product.png" alt=""/></div>
       <div className="image-containerr"><img src="/Product.png" alt=""/></div>
     </div>
+    <div className="image-container-Big itheb"><img src="/Product.png" alt=""/></div></div>
     <div className="Product-container-details">
-    <div className="image-container-Big"><img src="/Product.png" alt=""/></div>
-    <div className="DetailProd">
+    
+    <div >
       <div className="titlee">Appolo</div>
       <div className="Soustitle">Running Short</div>
       <div className="Size">Size:</div>
@@ -31,8 +33,8 @@ export default function ProductDetails() {
         <div className="ColorBox2"></div>
         <div className="ColorBox3"></div>
       </div>
-      <div className="Size">Price:</div>
-      <div className="price">$50.00</div>
+      <div className="Size" >Price:</div>
+      <div className="pricee">$50.00</div>
       <button className="button" onClick={test}  >ADD TO CART</button>
       <div className="textDet">Find stunning women"s cocktail dresses and party dresses.
       Stand out in lace and metallic cocktail

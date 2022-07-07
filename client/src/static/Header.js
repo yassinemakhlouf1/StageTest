@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cart from '../Components/cart/Cart';
 import "./Header.css";
 export default function Header() {
   const [selected, setSelected] = useState('€');
@@ -9,18 +10,18 @@ export default function Header() {
    
   
   <>
-      <div className='app-head'>
-        <div>
+      <div className='app-head '>
+        <div className='divH ml-0'>
         <a className="active"  href='' >Women</a>
         <a href='' id='p1'>Man</a>
         <a href='' id='p1'>kids</a>
         </div>
         
-        <div>
+        <div className='divH'>
        <img src="/Greenicon.png" alt="" />
         </div>
-        <div >
-          <div>{selected}</div>
+        <div className='divH mr-0'>
+          <div className='divH '>{selected}</div>
           <select onChange={(e)=>setSelected(e.target.value[0])} value={'None'} className="selectH">
 
             <option  value="None"></option>
@@ -31,6 +32,7 @@ export default function Header() {
         <img src="/Vector.png" alt=""/>
         </div>
       </div>
+  {/* <div className='cart-div'><Cart/></div> */}
   
     </>
 
