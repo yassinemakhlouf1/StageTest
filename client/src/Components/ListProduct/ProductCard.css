@@ -69,7 +69,6 @@
     display: flex;
     flex-direction: column;
     align-items:flex-start;
-    padding: 0px;
 
     width: 354px;
     height: 58px;
@@ -138,9 +137,8 @@
     display: inline-flex;
     justify-content: space-between;
     flex-wrap:wrap;
-    row-gap: 100px;
-    padding-left: 100px;
-    padding-right: 100px;    
+    row-gap: 50px;
+       
         
 }
 
@@ -148,9 +146,7 @@
     display: block;
 }
 .category-name{
-    padding-left: 120px;
-    padding-top: 2%;
-    padding-bottom: 2%;
+  
     font-weight: 400;
     font-size: 42px;
     line-height: 160%;
@@ -162,6 +158,8 @@
     /* --c-text */
 
     color: #1D1F22;
+
+    margin-bottom: 100px;
 
 }
 
