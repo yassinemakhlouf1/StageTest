@@ -168,10 +168,13 @@ background: #E5E5E5;
 
     justify-content:space-evenly;
     align-items :center;
+    padding-right: 5%;
 }
 .pCart{
     display: flex;
     justify-content: center;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 .buttonC{
     text-transform: uppercase;
@@ -188,19 +191,17 @@ width: 45px;
 .container-right-c{
     display: flex;
     justify-content: center;
+    
 
 }
 .image-containerC{
-    display: flex;
-    justify-content: flex-end;
-    height: 288px;
-width: 200px;
-left: 1140px;
-top: 280px;
-border-radius: 0px;
-padding-left: 10%;
+   display: flex;
+    position: relative;
+    justify-content: center;
+
 }
 .image-containerC img{
+    position: relative;
     width: 100%;
     height: auto;
     padding: 2px;
@@ -230,4 +231,29 @@ padding-left: 10%;
 }
 .total{
     display: flex;
+}
+.btn{
+    position: absolute;
+right: 50px ;
+bottom: 20px;
+width: 24px;
+height: 24px;
+color: white;
+background: rgba(0, 0, 0, 0.73);
+}
+
+.btn1{
+    position: absolute;
+right: 20px ;
+bottom: 20px;
+width: 24px;
+height: 24px;
+color: white;
+background: rgba(0, 0, 0, 0.73);
+}
+@media screen and (max-width :600px) {
+.cart-container{
+    display: inline-block;
+}
+
 }

@@ -1,25 +1,19 @@
 .Product-container{
   display: flex;
+  justify-content: space-around;
  flex-wrap: nowrap;
- padding-top: 33.41px;
- justify-content: center;
- width: 1364.03px;
- height: 800,59 px;  
  margin: auto;
- padding-left: 6%;
    
 }
 
+
 .Product-container-details{
-    width: 1364.03px;
-    height: 800,59px ;  
-    padding-left: 20.71px;
     display: flex;
 }
 .image-container-Big{
     display: flex;
     width: 682.015;
-    height: 559,59 ;  
+    margin-left: 10px !important;
 }
 .image-containerr{
     display: flex;
@@ -32,9 +26,7 @@
     padding: 2px;
 }
 
-.DetailProd{
-    padding-left: 53.405px;
-}
+
 .Soustitle{
     width: 292px;
 height: 27px;
@@ -147,15 +139,16 @@ height: 32px;
 padding-right: 10px;
 background: #0F6450;
 }
-.price
+.cartt .pricee
 {width: 86px;
 height: 46px;
 left: 929px;
 top: 494px;
+
     
 font-family: 'Raleway';
 font-style: normal;
-font-weight: 700;
+font-weight: 700 ;
 font-size: 24px;
 line-height: 18px;
 /* or 75% */
@@ -184,7 +177,8 @@ line-height: 120%;
 background: #5ECE7B;
 cursor: pointer;
 border: 0px solid #ffffff;
-padding-bottom: 40px;
+margin-bottom: 15px;
+
 }
 .textDet{
     width: 292px;
@@ -204,4 +198,8 @@ line-height: 159.96%;
 
 color: #1D1F22;
 }
-
+.itheb{
+    float: left;
+    margin: auto;
+    
+}
