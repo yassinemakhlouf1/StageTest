@@ -1,24 +1,29 @@
-.app-head{font-family: 'Raleway';
-  font-style: normal;
+.app-head{
   font-weight: 600;
   font-size: 16px;
   line-height: 120%; 
   overflow: hidden;
   background: hsl(0, 0%, 100%);
   display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
+    flex-wrap: rap;
+    justify-content: space-between;
+    padding-inline: 5%;
+    margin-bottom: 80px ;
+      
 }
-div {font-family: 'Raleway';
-  font-style: normal;
+.divH {
   font-weight: 600;
   font-size: 16px;
   line-height: 120%; 
   
+
+  
+}
+.mr-0{
+  margin-right: 0px;
+}
+.ml-0{
+  margin-left: 0px;
 }
 .app-head a.active {
   float: left;
@@ -42,13 +47,7 @@ line-height: 120%;
 }
 
 .selectH {
-font-family: 'Raleway';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 120%;
-border: 0;
-outline: 0;
+margin-right: 5px;
 background-color: transparent;
 width: 20px;
 border: 0px solid #ffffff;
@@ -131,12 +130,9 @@ flex: none;
 order: 0;
 flex-grow: 0;
   }
-  /* .test{
-    display: flex;
-width: 1440px;
-height: 1435px;
-left: 0px;
-top: 78px;
-
-background: rgba(57, 55, 72, 0.22);
-  } */
+.cart-div{
+  
+  width: 325px;
+  height: 677px;
+  
+}
