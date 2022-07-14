@@ -1,10 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./prodDetail.css";
+import { getDetailProd } from "./prodDetApi";
 export default function ProductDetails() {
+  const { id } = useParams();
 
   const  test = ()=> {
     console.log("test");
   }
+    const [data,setData]=useState();
+    useEffect(()=>{
+      const fetchData = async () => {
+        const result = await getDetailProd(id);
+        setData(result);
+        console.log(result);
+      };
+      fetchData();
+    }, []);    
+  
 
   return (
     <div className="Product-container cartt" >
