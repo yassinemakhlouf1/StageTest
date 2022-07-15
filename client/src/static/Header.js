@@ -4,18 +4,23 @@ import "./Header.css";
 export default function Header() {
   const [currency,Setcurrency]=useState('$');
   const [mycart, setMyCarte] = useState([]);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState('$');
   const  updateCurrancy = (cur)=>{
     setsymbole(cur);
     localStorage.setItem('currency',cur);
 
   }
+  const currencyDisplay = () =>{
+    console.log(localStorage.getItem('currency'))
+    if(localStorage.getItem('currency'))
+    return <div className='divH '>{localStorage.getItem('currency')}</div>
+    else
+    return <div className='divH '>{selected}</div>
+  }
   const  setsymbole = (val)=> {
     setSelected(val);
-   
-    console.log(selected);
   }
-  useEffect(()=>  {if((!localStorage.getItem('mycart')&& !localStorage.getItem('currency'))){
+  useEffect((e)=>  {if((!localStorage.getItem('mycart')&& !localStorage.getItem('currency'))){
     localStorage.setItem('currency',currency);
     localStorage.setItem('mycart',mycart);
   } else {
@@ -26,7 +31,6 @@ export default function Header() {
     console.log(currency);
 
     setSelected(currency);
-    
   }
   },[])
   // const handleChange = (event: SelectChangeEvent) => {
@@ -47,7 +51,7 @@ export default function Header() {
        <img src="/Greenicon.png" alt="" />
         </div>
         <div className='divH mr-0'>
-          <div className='divH '>{selected}</div>
+          {currencyDisplay()}
           <select onChange={(e)=>updateCurrancy(e.target.value)} value={'None'} className="selectH">
 
             <option  value="None"></option>
