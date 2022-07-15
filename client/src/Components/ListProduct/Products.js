@@ -1,4 +1,7 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import './ProductCard.css';
+import { products_details } from "./product_list_api";
 
 const currency = "$"
 
@@ -59,7 +62,25 @@ const products = [
 
 export default function Products(props) {
 
-          
+  const { id } = useParams();
+
+  const  test = ()=> {
+    console.log("test");
+  }
+    const [data,setData]=useState();
+    useEffect(()=>{
+      const fetchData = async () => {
+        const result = await products_details(id);
+        setData(result);
+        console.log(result);
+      };
+      fetchData();
+    }, []);    
+
+
+    
+
+
       const content = products.map((product) =>
         <div  className= {
           (() => {

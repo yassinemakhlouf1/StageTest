@@ -136,10 +136,10 @@
 }
 
 .all-cards-container{
-    display: inline-flex;
-    justify-content: space-between;
+    display: flex;
     flex-wrap:wrap;
     row-gap: 50px;
+    gap: 78px;
        
         
 }
