@@ -8,6 +8,7 @@ export default function Header() {
   const  updateCurrancy = (cur)=>{
     setsymbole(cur);
     localStorage.setItem('currency',cur);
+    window.location.reload(false);
 
   }
   const currencyDisplay = () =>{
