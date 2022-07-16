@@ -69,6 +69,7 @@ export default function Products(props) {
 
     const [data,setData]=useState();
     useEffect(()=>{
+      console.log('id:'+id)
       const fetchData = async () => {
         const result = await products_details(id);
         setData(result);

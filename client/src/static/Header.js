@@ -43,7 +43,7 @@ export default function Header() {
   <>
       <div className='app-head '>
         <div className='divH ml-0'>
-        <a className="active"  href='' >Women</a>
+        <a className="active"  href='/test/all' >all</a>
         <a href='' id='p1'>Man</a>
         <a href='' id='p1'>kids</a>
         </div>

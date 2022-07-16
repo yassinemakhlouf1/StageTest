@@ -4,9 +4,36 @@ import "./prodDetail.css";
 import { getDetailProd } from "./prodDetApi";
 export default function ProductDetails() {
   const { id } = useParams();
+  var currency = localStorage.getItem('currency');
 
+  
   const  test = ()=> {
-    console.log("test");
+   
+    var mycart=[];
+     mycart.push(localStorage.getItem('mycart') || null);
+     var newcart=JSON.stringify({
+      id: id,
+      nbr: 1,
+      taille:"xl"
+  })
+  
+  var bool=false;
+  try{
+     for (const i in mycart) {
+      if (mycart[i].id==id){
+      bool=true;}
+     }
+    }
+    catch (err){
+      console.log(err)
+    }
+    console.log(mycart)
+     console.log(bool);
+   if (bool==false){
+  mycart.push(newcart);}
+    // mycart.push(newcart)
+  localStorage.setItem('mycart', mycart);
+  console.log(localStorage.getItem('mycart').toString())
   }
     const [data,setData]=useState();
     useEffect(()=>{
@@ -16,23 +43,25 @@ export default function ProductDetails() {
         console.log(result);
       };
       fetchData();
+      
     }, []);    
   
 
-  return (
+  return (<>
+    {data?(
     <div className="Product-container cartt" >
       <div >
     <div className="itheb ">
-      <div className="image-containerr"><img src="/Product.png" alt=""/></div>
-      <div className="image-containerr"><img src="/Product.png" alt=""/></div>
-      <div className="image-containerr"><img src="/Product.png" alt=""/></div>
+      <div className="image-containerr"><img src={data.gallery[0]} alt=""/></div>
+      <div className="image-containerr"><img src={data.gallery[1]} alt=""/></div>
+      <div className="image-containerr"><img src={data.gallery[2]} alt=""/></div>
     </div>
-    <div className="image-container-Big itheb"><img src="/Product.png" alt=""/></div></div>
+    <div className="image-container-Big itheb"><img src={data.gallery[3]} alt=""/></div></div>
     <div className="Product-container-details">
     
     <div >
-      <div className="titlee">Appolo</div>
-      <div className="Soustitle">Running Short</div>
+      <div className="titlee">{data.brand}</div>
+      <div className="Soustitle">{data.name}</div>
       <div className="Size">Size:</div>
       <div className="SizeBox">
         <div className="Box">XS</div>
@@ -47,13 +76,13 @@ export default function ProductDetails() {
         <div className="ColorBox3"></div>
       </div>
       <div className="Size" >Price:</div>
-      <div className="pricee">$50.00</div>
+      <div className="pricee">{currency}{data.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       <button className="button" onClick={test}  >ADD TO CART</button>
-      <div className="textDet">Find stunning women"s cocktail dresses and party dresses.
-      Stand out in lace and metallic cocktail
-      dresses and party dresses from all your favorite brands.</div>
+      <div className="textDet">{data.description}</div>
     </div>
     </div>
     </div>
+  ):(<div>Not Accecible</div>)}
+  </>
   )
 }

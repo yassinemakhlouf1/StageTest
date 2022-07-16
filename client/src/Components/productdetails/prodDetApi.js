@@ -4,14 +4,15 @@ import axios from 'axios';
 export const getDetailProd = async (id) => {
     try {
     const { data } = await axios.post(
-        'http://localhost:4000',{"query":"{categories{products:products{name id inStock gallery description  category  brand }}}"},{
+      
+        'http://localhost:4000',{"query":"{product(id:"+'"'+id+'"' +"){name inStock gallery description  brand prices{currency{symbol}} prices{amount} }}"},{
             headers: {
               'Content-Type': 'application/json'
             }
           }
     );
 
-    return data.data.categories[0].products;
+    return data.data.product;
   } catch (error) {
     console.log(error);
   }
