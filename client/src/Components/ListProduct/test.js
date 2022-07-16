@@ -5,6 +5,8 @@ import { products_details } from "./product_list_api";
 
 var currency = localStorage.getItem('currency');
 
+var category = "All"
+
 const products = [
     {
         id: 1,
@@ -71,10 +73,10 @@ export default function Products(props) {
     useEffect(()=>{
       const fetchData = async () => {
         const result = await products_details(id);
-        setData(result);
-       console.log(result[0].prices);
-       console.log(result[0].prices[0].currency.symbol)
-       console.log(result[0].prices[0].amount)
+        result.map((p) => (() => {if(id==="clothes"){setData(result[1].products);category="Clothes"}
+      else if(id==="tech"){setData(result[2].products);category="Tech"}
+      else {setData(result[0].products)}})())
+        
       };
       fetchData();
     }, []);    
@@ -104,7 +106,7 @@ export default function Products(props) {
     </div>
   );
   return (
-    <div><div className="category-name">Category Name</div>
+    <div><div className="category-name">{category}</div>
     <div className="all-cards-container">
     {content}
     </div></div>
