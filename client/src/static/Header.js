@@ -43,9 +43,9 @@ export default function Header() {
   <>
       <div className='app-head '>
         <div className='divH ml-0'>
-        <a className="active"  href='' >Women</a>
-        <a href='' id='p1'>Man</a>
-        <a href='' id='p1'>kids</a>
+        <a className="active"  href='/all' >all</a>
+        <a className="active"  href='/tech' id='p1'>Tech</a>
+        <a className="active"  href='/clothes' id='p1'>Clothes</a>
         </div>
         
         <div className='divH'>

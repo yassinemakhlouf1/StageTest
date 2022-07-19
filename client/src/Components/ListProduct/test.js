@@ -71,6 +71,7 @@ export default function Products(props) {
 
     const [data,setData]=useState();
     useEffect(()=>{
+      console.log('id:'+id)
       const fetchData = async () => {
         const result = await products_details(id);
         result.map((p) => (() => {if(id==="clothes"){setData(result[1].products);category="Clothes"}
@@ -87,7 +88,7 @@ export default function Products(props) {
     
     
     const content = data.map((product) =>
-
+    <a href={"/product/"+product.id}>
     <div  className= {
       (() => {
           if(product.inStock===false) {return('card-container-blurred')}
@@ -96,7 +97,7 @@ export default function Products(props) {
         }
       )()  
         }   key={product.id}>
-      <img className='image-container' src={product.gallery[0]} alt='' />
+      <img className='image-container' src={product.gallery[0]} alt=''/>
       { product.cart === true && <img className="cart-image" src="./incart.png" alt='' />}
       { product.inStock === false && <div className="oos-container">OUT OF STOCK</div>}
       <div className='content-container'>
@@ -104,6 +105,7 @@ export default function Products(props) {
       <div className='price'>{currency}{product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       </div>
     </div>
+    </a>
   );
   return (
     <div><div className="category-name">{category}</div>

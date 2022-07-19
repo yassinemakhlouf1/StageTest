@@ -14,6 +14,8 @@ export default function Products(props) {
 
     const [data,setData]=useState();
     useEffect(()=>{
+      
+      try {
       const fetchData = async () => {
         const result = await products_details(id);
         result.map((p) => (() => {if(id==="clothes"){setData(result[1].products);category="Clothes"}
@@ -21,7 +23,10 @@ export default function Products(props) {
       else {setData(result[0].products)}})())
         
       };
-      fetchData();
+      fetchData();}
+      catch(err) {
+        console.log(err);
+      }
     }, []);    
 
     if (data === undefined) {
@@ -30,7 +35,8 @@ export default function Products(props) {
     
     
     const content = data.map((product) =>
-
+    <div className="productlink">
+    <a  href={"/product/"+product.id}>
     <div  className= {
       (() => {
           if(product.inStock===false) {return('card-container-blurred')}
@@ -47,6 +53,7 @@ export default function Products(props) {
       <div className='price'>{currency}{product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       </div>
     </div>
+    </a> </div>
   );
   return (
     <div><div className="category-name">{category}</div>
