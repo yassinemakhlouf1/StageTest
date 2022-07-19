@@ -15,13 +15,15 @@ function App() {
     <BrowserRouter>
       <Routes >
         <Route path="/" element={<Layout />} >
-          <Route path="/Products/:id" element={<ProductDetails/>}/>
+          <Route path="/Product/:id" element={<ProductDetails/>}/>
 
           
-          <Route path ="/" element={<><ProductCard title={"Appollo Running Short"} imageUrl="https://dictionary.cambridge.org/fr/images/thumb/Tshirt_noun_001_18267_2.jpg?version=5.0.245" price={"50.00$"} /></>} />
-                                          <Route path ="/products/:id" element={<Products/>} />
+
+                                          <Route path ="/" element={<Products/>} />
+                                          <Route path ="/:id" element={<Products/>} />
                                           <Route path ="/cart" element={<Cart/>} />
                                           <Route path ="/test" element={<Test/>} />
+                                          <Route path ="/test/:id" element={<Test/>} />
         
         </Route>
         
