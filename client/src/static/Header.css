@@ -5,7 +5,6 @@
   overflow: hidden;
   background: hsl(0, 0%, 100%);
   display: flex;
-    flex-wrap: rap;
     justify-content: space-between;
     
     margin-bottom: 80px ;
@@ -38,13 +37,18 @@
    background-color: hsl(0, 0%, 100%);
   color: #5ECE7B !important;
 }
-.app-head a {font-family: 'Raleway';
-  font-family: 'Raleway';
-font-style: normal;
+.app-head a {
 font-weight: 600;
-font-size: 16px;
 line-height: 120%;
 }
+#p0 {
+  text-decoration: none;
+}
+#p1 { 
+  text-indent: 32px; 
+  text-decoration: none;
+  color: #000000; 
+  font-size: 17px;}
 
 .selectH {
 margin-right: 5px;
@@ -60,18 +64,7 @@ border: 0px solid #ffffff;
   line-height: 120%; 
 }
 
-#p0 {
-  text-decoration: none;
-}
-#p1 { font-family: 'Raleway';
-  font-style: normal;
-  text-indent: 32px; 
-  text-decoration: none;
-  color: #000000; 
-  float: left;
-  text-align: center;
-  padding: 14px 16px;
-  font-size: 17px;}
+
 #select{/* $ */
 
 
