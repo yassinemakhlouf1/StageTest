@@ -3,8 +3,33 @@ import Cart from '../Components/cart/Cart';
 import "./Header.css";
 export default function Header() {
   const [currency,Setcurrency]=useState('$');
-  const [mycart, setMyCarte] = useState([]);
+  // const [mycart, setMyCarte] = useState([]);
+  var mycart=[];
   const [selected, setSelected] = useState('$');
+  const [link1, setLink1] = useState('');
+  const [link2, setLink2] = useState('p1');
+  const [link3, setLink3] = useState('p1');
+
+
+  const  SetactiveLink = (val)=>{
+    console.log(window.location.href.split("/").pop());
+    if (val=='tech'){
+      setLink2('');
+      setLink1('p1')
+      setLink3('p1');
+    } else {
+      if(val=='clothes'){
+        setLink1('p1');
+        setLink2('p1');
+        setLink3('');
+      }
+      else {
+        setLink1('');
+        setLink2('p1');
+        setLink3('p1');
+      }
+    }
+  }
   const  updateCurrancy = (cur)=>{
     setsymbole(cur);
     localStorage.setItem('currency',cur);
@@ -21,13 +46,17 @@ export default function Header() {
   const  setsymbole = (val)=> {
     setSelected(val);
   }
-  useEffect((e)=>  {if((!localStorage.getItem('mycart')&& !localStorage.getItem('currency'))){
+  useEffect((e)=>  {
+    SetactiveLink(window.location.href.split("/").pop());
+    
+    
+    
+    if((!localStorage.getItem('mycart') || !localStorage.getItem('currency'))){
     localStorage.setItem('currency',currency);
-    localStorage.setItem('mycart',mycart);
+    localStorage.setItem('mycart','[]');
   } else {
     console.log('aa');
     console.log(localStorage.getItem('currency'));
-    setMyCarte(localStorage.getItem('mycart'));
     Setcurrency(localStorage.getItem('currency'));
     console.log(currency);
 
@@ -43,9 +72,9 @@ export default function Header() {
   <>
       <div className='app-head '>
         <div className='divH ml-0'>
-        <a className="active"  href='/all' >all</a>
-        <a className="active"  href='/tech' id='p1'>Tech</a>
-        <a className="active"  href='/clothes' id='p1'>Clothes</a>
+        <a className="active"  href='/all' id={link1}  >all</a>
+        <a className="active p0"  href='/tech' id={link2} >Tech</a>
+        <a className="active p0"  href='/clothes' id={link3} >Clothes</a>
         </div>
         
         <div className='divH'>
@@ -61,8 +90,8 @@ export default function Header() {
             <option value="A$"  >AUD</option>
             <option value="¥"  >JPY</option>
             <option value="₽"  >RUB</option>
-        </select>
-        <img src="/Vector.png" alt=""/>
+        </select><a href='/cart'>
+        <img src="/Vector.png" alt=""/></a>
         </div>
       </div>
   {/* <div className='cart-div'><Cart/></div> */}
