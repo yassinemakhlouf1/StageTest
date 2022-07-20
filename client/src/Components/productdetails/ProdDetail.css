@@ -94,7 +94,7 @@ justify-content:  space-between ;
 width: 288px;
 }
 .Box{
-    
+
 text-transform: uppercase;
 box-sizing: border-box;
 width: 63px;
@@ -106,6 +106,14 @@ justify-content: center;
 align-items :center;
 
 }
+#bSelected{
+background-color: #000000;
+color: #FFFFFF;
+}
+#bnotSelected{
+background-color: #FFFFFF;
+    
+}
 .ColBox{
     display: flex;
 flex-wrap: nowrap;
@@ -115,7 +123,7 @@ width: 114px;
 }
 .ColorBox1{
 box-sizing: border-box;
-border: 1px solid #1D1F22;
+border: none;
 
 width: 32px;
 height: 32px;
@@ -124,7 +132,7 @@ background: #D3D2D5;
 }
 .ColorBox2{
 box-sizing: border-box;
-border: 1px solid #1D1F22;
+border: none;
 width: 32px;
 height: 32px;
 padding-right: 10px;
@@ -132,12 +140,15 @@ background: #2B2B2B;
 }
 .ColorBox3{
 box-sizing: border-box;
-border: 1px solid #1D1F22;
         
 width: 32px;
+border: none;
 height: 32px;
 padding-right: 10px;
 background: #0F6450;
+}
+#ClBoxselected {
+border: 1px solid rgba(94, 206, 123, 1);
 }
 .cartt .pricee
 {width: 86px;
