@@ -53,7 +53,6 @@ export default function Header() {
     
     if((!localStorage.getItem('mycart') || !localStorage.getItem('currency'))){
     localStorage.setItem('currency',currency);
-    localStorage.setItem('mycart','[]');
   } else {
     console.log('aa');
     console.log(localStorage.getItem('currency'));

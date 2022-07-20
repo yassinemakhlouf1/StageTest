@@ -36,9 +36,20 @@ export default function Cart() {
   }
 var left= '<';
 var right='>';
-const   [items, setItems] = useState(JSON.parse(localStorage.getItem("mycart")|| null));
+const   [items, setItems] = useState((localStorage.getItem('mycart')|| null));
 const [cnt,setCnt] =useState([]);
 
+
+console.log(JSON.parse(items))
+
+
+if (items === undefined) {
+
+}
+
+var cart_product=JSON.parse(items)
+console.log('cart_product')
+console.log(cart_product)
 
 
 const incrNbr =(val)=>{
@@ -51,11 +62,8 @@ const incrNbr =(val)=>{
   // console.log(cnt)
 }
 useEffect(()=>{
-  setItems(JSON.parse(localStorage.getItem("mycart")|| null));
-  for (var i= 0 ;i<items.length;i++){
-    setCnt([...cnt,cnt[i]=items[i].nbr])
-  }
-  console.log(cnt);
+  setItems(JSON.parse(localStorage.getItem('mycart')));
+
 },[]);
 
   return (
@@ -91,7 +99,7 @@ useEffect(()=>{
       <div className='container-right-c'>
       <div className='container-nb'>
       <button className='buttonC' onClick={(e) => {incrNbr(index); console.log(index);e.preventDefault()}}>+</button>
-      <p className='pCart'>{cnt[index]}</p>
+      <p className='pCart'></p>
       <button className='buttonC ' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button>
     </div>
     <div className="image-containerC">
@@ -120,4 +128,5 @@ useEffect(()=>{
     <button className='button mr-t'>ORDER</button>
     </div>
   )
+  
 }
