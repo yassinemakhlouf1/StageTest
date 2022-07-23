@@ -1,39 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import "./style.css";
+
 export default function Cart() {
+
+  var length = 0
+
   const [count, setCount] = useState(1);
+
   var currency = localStorage.getItem('currency');
 
-  const [bxs, setXs] = useState('bSelected');
-  const [bs, setS] = useState('bnotSelected');
-  const [bl, setL] = useState('bnotSelected');
-  const [bxl, setXl] = useState('bnotSelected');
-  const resetButton = () =>{
-    setXs('bnotSelected');
-    setS('bnotSelected');
-    setL('bnotSelected');
-    setXl('bnotSelected');
-  }
+
+
+
+  
+
   const [taille,setTaille]=useState();
 
-  const SetSize = (val) =>{
-    if (val=='S'){
-      resetButton();
-      setS('bSelected');
-    }else if (val=='L'){
-      resetButton();
-      setL('bSelected');
-    }else if (val=='XL'){
-      resetButton();
-      setXl('bSelected');
-    }else {
-      resetButton();
-      setXs('bSelected');
-    }
-    setTaille(val);
-    console.log('setsize='+taille)
-
-  }
+  
 var left= '<';
 var right='>';
 const   [items, setItems] = useState(JSON.parse(localStorage.getItem("mycart")|| null));
@@ -58,28 +41,50 @@ useEffect(()=>{
   console.log(cnt);
 },[]);
 
+if(items===undefined){}
+
+const [sizes,setSizes] = useState(items.map((item)=>(item.taille)))
+
+const SetSize = (val,i) =>{
+  sizes[i]=(val)
+  setSizes(sizes => [...sizes,sizes])
+  setTaille(val);
+  console.log('setsize='+taille)
+
+}
+
+
   return (
     <div className='cart-container'>    <div className='cart'>Cart</div>
-    <hr/>
+    <hr/>{console.log(items)}
     {items?.map((item,index)=>(
+      
     <div >
  
-    <div className='cart-container-detail'>
+    <div className='cart-container-detail' >
+        
     <div className="DetailProdc">
       <div className="titleeC" >{item.product.brand}</div>
       <div className="SoustitleC">{item.product.name}</div>
       <div className="priceC">{currency}{item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       <div className="SizeC">Size:</div>
-      <div className="SizeBoxC">
+      <div className="SizeBoxC" >
         {/* <div className="BoxC">XS</div>
         <div className="BoxC">S</div>
         <div className="BoxC">L</div>
         <div className="BoxC">XL</div> */}
-        
-        <button onClick={(e)=>SetSize("XS")} id={bxs} className="Box">XS</button>
-      <button onClick={(e)=>SetSize("S")} id={bs} className="Box">S</button>
-        <button onClick={(e)=>SetSize("L")} id={bl} className="Box">L</button>
-        <button onClick={(e)=>SetSize("XL")} id={bxl} className="Box">XL</button>
+
+        <div style= {{display : "none"}}>{}</div>
+        {console.log(index +":"+ sizes[index])}
+
+        <button onClick={(e)=>{SetSize("XS",index);console.log(sizes) }} 
+        style={{background: sizes[index]==="XS" ? "black" : "white", color: sizes[index]==="XS" ? "white":"black"}} className="Box">XS</button>
+        <button onClick={(e)=>{SetSize("S",index);console.log(sizes)}}
+        style={{background: sizes[index]==="S" ? "black" : "white", color: sizes[index]==="S" ? "white":"black"}} className="Box">S</button>
+        <button onClick={(e)=>{SetSize("L",index);console.log(sizes)}}
+        style={{background: sizes[index]==="L" ? "black" : "white", color: sizes[index]==="L" ? "white":"black"}} className="Box">L</button>
+        <button onClick={(e)=>{SetSize("XL",index);console.log(sizes)}}
+        style={{background: sizes[index]==="XL" ? "black" : "white", color: sizes[index]==="XL" ? "white":"black"}} className="Box">XL</button>
       </div>
       <div className="SizeC">color:</div>
       <div className="ColBoxC">
