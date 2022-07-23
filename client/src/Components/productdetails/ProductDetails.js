@@ -114,7 +114,7 @@ export default function ProductDetails() {
     <div >
       <div className="titlee">{data.brand}</div>
       <div className="Soustitle">{data.name}</div>
-      <div className="Size">Size:</div>
+      <div className="Size">{data.attributes[0].name+":"}</div>
       <div className="SizeBox">
       <button onClick={(e)=>SetSize("XS")} id={bxs} className="Box">XS</button>
       <button onClick={(e)=>SetSize("S")} id={bs} className="Box">S</button>
