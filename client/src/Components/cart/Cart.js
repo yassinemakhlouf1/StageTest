@@ -1,39 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import "./style.css";
+
 export default function Cart() {
+
+
   const [count, setCount] = useState(1);
+
   var currency = localStorage.getItem('currency');
 
-  const [bxs, setXs] = useState('bSelected');
-  const [bs, setS] = useState('bnotSelected');
-  const [bl, setL] = useState('bnotSelected');
-  const [bxl, setXl] = useState('bnotSelected');
-  const resetButton = () =>{
-    setXs('bnotSelected');
-    setS('bnotSelected');
-    setL('bnotSelected');
-    setXl('bnotSelected');
-  }
+
+
+
+  
+
   const [taille,setTaille]=useState();
 
-  const SetSize = (val) =>{
-    if (val=='S'){
-      resetButton();
-      setS('bSelected');
-    }else if (val=='L'){
-      resetButton();
-      setL('bSelected');
-    }else if (val=='XL'){
-      resetButton();
-      setXl('bSelected');
-    }else {
-      resetButton();
-      setXs('bSelected');
-    }
-    setTaille(val);
-    console.log('setsize='+taille)
+  var c = -1
 
-  }
+  
 var left= '<';
 var right='>';
 const   [items, setItems] = useState(JSON.parse(localStorage.getItem("mycart")|| null));
@@ -58,41 +42,113 @@ useEffect(()=>{
   console.log(cnt);
 },[]);
 
+if(items===undefined){}
+
+const [sizes,setSizes] = useState((items?.map((item,i)=>(item.attribute.map((attr)=>(attr))))))
+const [quantity,setQuantity] = useState((items?.map((item,i)=>(item.nbr))))
+
+console.log("quanti")
+console.log(quantity)
+
+const SetSize = (val,i,ii) =>{
+  sizes[i][ii]=(val)
+  items[i].attribute=sizes[i]
+
+  console.log('items')
+
+  console.log(items)
+
+  
+
+localStorage.removeItem("mycart")
+const newItems = JSON.stringify(items)
+
+localStorage.setItem("mycart",newItems);
+
+  setSizes([...sizes])
+  
+}
+
+console.log("arrrrrrSIZESSrrrrrrrrrrrrrrrrrrr")
+console.log(sizes)
+
+const increment=(val,i,sign)=>{
+  if (sign=="+"){
+    val++
+    quantity[i]=val
+    items[i].nbr=quantity[i]
+    console.log('items')
+    console.log(items)
+    localStorage.removeItem("mycart")
+    const newItems = JSON.stringify(items)
+
+localStorage.setItem("mycart",newItems);
+    setQuantity([...quantity])
+  }else{
+    if(val>1)
+    {quantity[i]-=1 ;
+      items[i].nbr=quantity[i]
+
+    console.log('items')
+
+    console.log(items)
+    localStorage.removeItem("mycart")
+    const newItems = JSON.stringify(items)
+    localStorage.setItem("mycart",newItems);
+    setQuantity([...quantity])}
+
+  }
+
+}
   return (
     <div className='cart-container'>    <div className='cart'>Cart</div>
-    <hr/>
+    <hr/>{console.log(items)}
     {items?.map((item,index)=>(
+      
     <div >
  
-    <div className='cart-container-detail'>
+    <div className='cart-container-detail' >
+        
     <div className="DetailProdc">
       <div className="titleeC" >{item.product.brand}</div>
       <div className="SoustitleC">{item.product.name}</div>
       <div className="priceC">{currency}{item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
-      <div className="SizeC">Size:</div>
-      <div className="SizeBoxC">
         {/* <div className="BoxC">XS</div>
         <div className="BoxC">S</div>
         <div className="BoxC">L</div>
         <div className="BoxC">XL</div> */}
+
+        <div style= {{display : "none"}}>{}</div>
+        {console.log(index)}
+        {console.log(item.attribute.map((attribute,i)=>({attribute})))}
+
+
+        {item.product.attributes.map((attribute,i)=>(<><div className='SizeC'>{attribute.name}:</div>
+              <div className="SizeBoxC" >
+              {attribute.items.map((attribute_item,ii)=>{ c=c+1
+                if (attribute.name.toLowerCase().trim()=="color") {
+                 return <button onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
+        style={{background: attribute_item.value,border: sizes[index][i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)"}}className ="ColorSelect"></button>
+      }else{
+        return <button  onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
+                style={{background: sizes[index][i]===attribute_item.value ? "black" : "white", color: sizes[index][i]===attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
+                        }
+                     
+                      })}
+        {console.log(attribute.name.toLowerCase().trim())}
+                </div></>
+
+        ))}
         
-        <button onClick={(e)=>SetSize("XS")} id={bxs} className="Box">XS</button>
-      <button onClick={(e)=>SetSize("S")} id={bs} className="Box">S</button>
-        <button onClick={(e)=>SetSize("L")} id={bl} className="Box">L</button>
-        <button onClick={(e)=>SetSize("XL")} id={bxl} className="Box">XL</button>
-      </div>
-      <div className="SizeC">color:</div>
-      <div className="ColBoxC">
-        <div className="ColorBox1C"></div>
-        <div className="ColorBox2C"></div>
-        <div className="ColorBox3C"></div>
-      </div>
+        
+        
+
       </div>
       <div className='container-right-c'>
       <div className='container-nb'>
-      <button className='buttonC' onClick={(e) => {incrNbr(index); console.log(index);e.preventDefault()}}>+</button>
-      <p className='pCart'>{cnt[index]}</p>
-      <button className='buttonC ' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button>
+      <button className='buttonC' onClick={(e) => {increment(quantity[index],index,"+")}}>+</button>
+      <p className='pCart'>{quantity[index]}</p>
+      <button className='buttonC ' onClick={(e) => {increment(quantity[index],index,"-")}}>-</button>
     </div>
     <div className="image-containerC">
       <img src={item.product.gallery[0]}  alt=""/>

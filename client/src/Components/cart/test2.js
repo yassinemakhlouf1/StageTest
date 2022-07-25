@@ -3,7 +3,6 @@ import "./style.css";
 
 export default function Cart() {
 
-  var length = 0
 
   const [count, setCount] = useState(1);
 
@@ -45,20 +44,62 @@ useEffect(()=>{
 
 if(items===undefined){}
 
-const [sizes,setSizes] = useState((items.map((item,i)=>(item.product.attributes))))
-console.log("arrrrrrrrrrrrrrrrrrrrrrrrr")
-console.log(sizes)
+const [sizes,setSizes] = useState((items?.map((item,i)=>(item.attribute.map((attr)=>(attr))))))
+const [quantity,setQuantity] = useState((items?.map((item,i)=>(item.nbr))))
 
-const SetSize = (val,i,ii,iii) =>{
-  sizes[i][ii][iii]=(val)
-  setSizes(sizes => [...sizes,sizes])
-  setTaille(val);
-  console.log('setsize='+taille)
+console.log("quanti")
+console.log(quantity)
 
+const SetSize = (val,i,ii) =>{
+  sizes[i][ii]=(val)
+  items[i].attribute=sizes[i]
+
+  console.log('items')
+
+  console.log(items)
+
+  
+
+localStorage.removeItem("mycart")
+const newItems = JSON.stringify(items)
+
+localStorage.setItem("mycart",newItems);
+
+  setSizes([...sizes])
+  
 }
 
+console.log("arrrrrrSIZESSrrrrrrrrrrrrrrrrrrr")
+console.log(sizes)
 
+const increment=(val,i,sign)=>{
+  if (sign=="+"){
+    val++
+    quantity[i]=val
+    items[i].nbr=quantity[i]
+    console.log('items')
+    console.log(items)
+    localStorage.removeItem("mycart")
+    const newItems = JSON.stringify(items)
 
+localStorage.setItem("mycart",newItems);
+    setQuantity([...quantity])
+  }else{
+    if(val>1)
+    {quantity[i]-=1 ;
+      items[i].nbr=quantity[i]
+
+    console.log('items')
+
+    console.log(items)
+    localStorage.removeItem("mycart")
+    const newItems = JSON.stringify(items)
+    localStorage.setItem("mycart",newItems);
+    setQuantity([...quantity])}
+
+  }
+
+}
   return (
     <div className='cart-container'>    <div className='cart'>Cart</div>
     <hr/>{console.log(items)}
@@ -79,18 +120,18 @@ const SetSize = (val,i,ii,iii) =>{
 
         <div style= {{display : "none"}}>{}</div>
         {console.log(index)}
-        {console.log(item.product.attributes.map((attribute,i)=>({attribute})))}
+        {console.log(item.attribute.map((attribute,i)=>({attribute})))}
 
 
-        {item.product.attributes.map((attribute,i)=>(<><div className='SizeC'>{attribute.name}</div>
+        {item.product.attributes.map((attribute,i)=>(<><div className='SizeC'>{attribute.name}:</div>
               <div className="SizeBoxC" >
               {attribute.items.map((attribute_item,ii)=>{ c=c+1
                 if (attribute.name.toLowerCase().trim()=="color") {
                  return <button onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
-        style={{background: attribute_item.value}}className ="ColorSelect"></button>
+        style={{background: attribute_item.value,border: sizes[index][i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)"}}className ="ColorSelect"></button>
       }else{
         return <button  onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
-                style={{background: sizes[index][i][ii]===attribute_item.value ? "black" : "white", color: sizes[index][i][ii]===attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
+                style={{background: sizes[index][i]===attribute_item.value ? "black" : "white", color: sizes[index][i]===attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
                         }
                      
                       })}
@@ -105,9 +146,9 @@ const SetSize = (val,i,ii,iii) =>{
       </div>
       <div className='container-right-c'>
       <div className='container-nb'>
-      <button className='buttonC' onClick={(e) => {incrNbr(index); console.log(index);e.preventDefault()}}>+</button>
-      <p className='pCart'>{cnt[index]}</p>
-      <button className='buttonC ' onClick={() => {if (count>0 ) setCount(count - 1)}}>-</button>
+      <button className='buttonC' onClick={(e) => {increment(quantity[index],index,"+")}}>+</button>
+      <p className='pCart'>{quantity[index]}</p>
+      <button className='buttonC ' onClick={(e) => {increment(quantity[index],index,"-")}}>-</button>
     </div>
     <div className="image-containerC">
       <img src={item.product.gallery[0]}  alt=""/>
