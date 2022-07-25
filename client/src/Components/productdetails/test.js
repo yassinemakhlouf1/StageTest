@@ -72,11 +72,11 @@ setSizes([...sizes])
     <div className="Product-container cartt" >
       <div >
     <div className="itheb ">
-      <div className="image-containerr"><img src={data.gallery[0]} alt=""/></div>
-      <div className="image-containerr"><img src={data.gallery[1]} alt=""/></div>
-      <div className="image-containerr"><img src={data.gallery[2]} alt=""/></div>
+    <div className="image-containerr" style={{  visibility: data.gallery[1]==null ? "hidden":"visible"}}><img src={data.gallery[1]} alt=""/></div>
+      <div className="image-containerr" style={{  visibility: data.gallery[2]==null ? "hidden":"visible"}}><img src={data.gallery[2]} alt=""/></div>
+      <div className="image-containerr" style={{  visibility: data.gallery[3]==null ? "hidden":"visible"}}><img src={data.gallery[3]} alt=""/></div>
     </div>
-    <div className="image-container-Big itheb"><img src={data.gallery[3]} alt=""/></div></div>
+    <div className="image-container-Big itheb"><img className="b_img" src={data.gallery[0]} alt=""/></div></div>
     <div className="Product-container-details">
     
     <div >
@@ -89,7 +89,7 @@ setSizes([...sizes])
               {attribute.items.map((attribute_item,ii)=>{ 
                 if (attribute.name.toLowerCase().trim()=="color") {
                  return <button onClick={(e)=>{SetSize(attribute_item.value,i); }} 
-        style={{background: attribute_item.value}} className ="ColorBox1"></button>
+        style={{background: attribute_item.value, border: sizes[i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)"}} className ="ColorBox1"></button>
       }else{
         return <button  onClick={(e)=>{SetSize(attribute_item.value,i);}} 
         style={{background: sizes[i]==attribute_item.value ? "black" : "white", color: sizes[i]==attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
