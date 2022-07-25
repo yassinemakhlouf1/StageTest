@@ -16,6 +16,8 @@ export default function Cart() {
 
   const [taille,setTaille]=useState();
 
+  var c = -1
+
   
 var left= '<';
 var right='>';
@@ -43,10 +45,12 @@ useEffect(()=>{
 
 if(items===undefined){}
 
-const [sizes,setSizes] = useState(items.map((item)=>(item.taille)))
+const [sizes,setSizes] = useState((items.map((item,i)=>(item.product.attributes))))
+console.log("arrrrrrrrrrrrrrrrrrrrrrrrr")
+console.log(sizes)
 
-const SetSize = (val,i) =>{
-  sizes[i]=(val)
+const SetSize = (val,i,ii,iii) =>{
+  sizes[i][ii][iii]=(val)
   setSizes(sizes => [...sizes,sizes])
   setTaille(val);
   console.log('setsize='+taille)
@@ -68,33 +72,36 @@ const SetSize = (val,i) =>{
       <div className="titleeC" >{item.product.brand}</div>
       <div className="SoustitleC">{item.product.name}</div>
       <div className="priceC">{currency}{item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
-      <div className="SizeC">Size:</div>
-      <div className="SizeBoxC" >
         {/* <div className="BoxC">XS</div>
         <div className="BoxC">S</div>
         <div className="BoxC">L</div>
         <div className="BoxC">XL</div> */}
 
         <div style= {{display : "none"}}>{}</div>
-        {console.log(item.product.attributes)}
+        {console.log(index)}
+        {console.log(item.product.attributes.map((attribute,i)=>({attribute})))}
 
 
+        {item.product.attributes.map((attribute,i)=>(<><div className='SizeC'>{attribute.name}</div>
+              <div className="SizeBoxC" >
+              {attribute.items.map((attribute_item,ii)=>{ c=c+1
+                if (attribute.name.toLowerCase().trim()=="color") {
+                 return <button onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
+        style={{background: attribute_item.value}}className ="ColorSelect"></button>
+      }else{
+        return <button  onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
+                style={{background: sizes[index][i][ii]===attribute_item.value ? "black" : "white", color: sizes[index][i][ii]===attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
+                        }
+                     
+                      })}
+        {console.log(attribute.name.toLowerCase().trim())}
+                </div></>
 
-        <button onClick={(e)=>{SetSize("XS",index);console.log(sizes) }} 
-        style={{background: sizes[index]==="XS" ? "black" : "white", color: sizes[index]==="XS" ? "white":"black"}} className="Box">XS</button>
-        <button onClick={(e)=>{SetSize("S",index);console.log(sizes)}}
-        style={{background: sizes[index]==="S" ? "black" : "white", color: sizes[index]==="S" ? "white":"black"}} className="Box">S</button>
-        <button onClick={(e)=>{SetSize("L",index);console.log(sizes)}}
-        style={{background: sizes[index]==="L" ? "black" : "white", color: sizes[index]==="L" ? "white":"black"}} className="Box">L</button>
-        <button onClick={(e)=>{SetSize("XL",index);console.log(sizes)}}
-        style={{background: sizes[index]==="XL" ? "black" : "white", color: sizes[index]==="XL" ? "white":"black"}} className="Box">XL</button>
-      </div>
-      <div className="SizeC">color:</div>
-      <div className="ColBoxC">
-        <div className="ColorBox1C"></div>
-        <div className="ColorBox2C"></div>
-        <div className="ColorBox3C"></div>
-      </div>
+        ))}
+        
+        
+        
+
       </div>
       <div className='container-right-c'>
       <div className='container-nb'>

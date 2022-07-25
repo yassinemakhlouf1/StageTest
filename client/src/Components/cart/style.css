@@ -236,3 +236,10 @@ display: inline-block;
 }
 
 }
+.ColorSelect{
+  box-sizing: border-box;
+  border: 1px solid #1D1F22;
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
