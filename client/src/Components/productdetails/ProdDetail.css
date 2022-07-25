@@ -12,7 +12,7 @@
   }
   .image-container-Big{
       display: flex;
-      width: 682.015;
+      width: 682.015px;
       margin-left: 10px !important;
   }
   .image-containerr{
@@ -213,3 +213,7 @@
       margin: auto;
       
   }
+
+  .b_img{
+    height: 100%; width: 100%; object-fit: contain;
+}
