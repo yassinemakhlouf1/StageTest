@@ -11,10 +11,12 @@ var category = "All"
 export default function Products(props) {
 
   const { id } = useParams();
+  const   [items, setItems] = useState(JSON.parse(localStorage.getItem("mycart")|| null));
+  const [products,SetProducts] = useState((items?.map((item,i)=>(item?.product.id))))
 
     const [data,setData]=useState();
     useEffect(()=>{
-      
+      console.log(products)
       try {
       const fetchData = async () => {
         const result = await products_details(id);
@@ -46,7 +48,7 @@ export default function Products(props) {
       )()  
         }   key={product.id}>
       <img className='image-container' src={product.gallery[0]} alt='' />
-      { product.cart === true && <img className="cart-image" src="./incart.png" alt='' />}
+      { products.includes(product.id) && <img className="cart-image" src="./incart.png" alt='' />}
       { product.inStock === false && <div className="oos-container">OUT OF STOCK</div>}
       <div className='content-container'>
       <div div className='title'>{product.name}</div>

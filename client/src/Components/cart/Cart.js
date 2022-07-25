@@ -7,7 +7,8 @@ export default function Cart() {
   const [count, setCount] = useState(1);
 
   var currency = localStorage.getItem('currency');
-
+  
+  
 
 
 
@@ -34,19 +35,24 @@ const incrNbr =(val)=>{
   // setCnt(...cnt,cnt[0]++)
   // console.log(cnt)
 }
+
 useEffect(()=>{
   setItems(JSON.parse(localStorage.getItem("mycart")|| null));
   for (var i= 0 ;i<items.length;i++){
-    setCnt([...cnt,cnt[i]=items[i].nbr])
+    setCnt([...cnt,cnt[i]=items[i].nbr]);
+
+    
   }
   console.log(cnt);
+  calculTotal();
 },[]);
 
 if(items===undefined){}
 
 const [sizes,setSizes] = useState((items?.map((item,i)=>(item.attribute.map((attr)=>(attr))))))
 const [quantity,setQuantity] = useState((items?.map((item,i)=>(item.nbr))))
-
+const [img,setImg] = useState((items?.map((item,i)=>(item?.product.gallery.map((attr)=>(attr))))))
+console.log(img)
 console.log("quanti")
 console.log(quantity)
 
@@ -98,7 +104,49 @@ localStorage.setItem("mycart",newItems);
     setQuantity([...quantity])}
 
   }
-
+  calculTotal();
+}
+const changeImg=(index,sign)=>{ 
+  var i;
+  if (sign==">"){
+    var x =img[index][0];
+    console.log('img[index].length')
+    var y=img[index].length -1;
+    for ( i=0;i<y;i++){
+      img[index][i]=img[index][i+1];}
+     img[index][y]=x
+  setImg([...img])
+   }
+   else{
+    
+    console.log('img[index].length')
+    var y=img[index].length -1;
+    var x =img[index][y];
+    for ( i=y;i>0;i--){
+      img[index][i]=img[index][i-1];}
+    img[index][0]=x;
+  setImg([...img])
+   }
+   
+}
+const [total,SetTotal] =useState();
+const [tax,SetTax] =useState();
+const [nombreProduit,SetNombreProduit] =useState();
+const calculTotal=()=>{
+  var nbreProduct=0;
+  let  result=0;
+  // item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())
+for(var i=0;i<items.length;i++){
+  nbreProduct+=quantity[i];
+result=result+(parseInt(items[i].product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})()))*quantity[i]);
+}
+let tax = (result *21)/100;
+console.log(tax)
+result=result+tax;
+result=parseFloat(result).toFixed(2);
+SetTotal(result);
+SetTax(tax);
+SetNombreProduit(nbreProduct);
 }
   return (
     <div className='cart-container'>    <div className='cart'>Cart</div>
@@ -151,9 +199,9 @@ localStorage.setItem("mycart",newItems);
       <button className='buttonC ' onClick={(e) => {increment(quantity[index],index,"-")}}>-</button>
     </div>
     <div className="image-containerC">
-      <img src={item.product.gallery[0]}  alt=""/>
-      <button className='btn' > {left} </button>
-      <button className='btn1'> {right} </button>
+      <img src={img[index][0]}  alt=""/>
+      <button className='btn' onClick={(e)=>changeImg(index,'>')} > {left} </button>
+      <button className='btn1' onClick={(e)=>changeImg(index,'<')}> {right} </button>
       </div>
     
     </div>
@@ -168,9 +216,9 @@ localStorage.setItem("mycart",newItems);
     <div className='txt1'>Total:</div>
     </div>
     <div className='total-r mt-l' >
-    <div className='txt'>$42.00 </div>
-    <div className='txt'>3</div>
-    <div className='txt'>$2000</div>
+    <div className='txt'>{tax} </div>
+    <div className='txt'>{nombreProduit}</div>
+    <div className='txt'>{currency}{total}</div>
     </div>
     </div>
     <button className='button mr-t'>ORDER</button>
