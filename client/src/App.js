@@ -8,6 +8,9 @@ import Products from './Components/ListProduct/Products';
 import ProductCard from './Components/ListProduct/ProductCard';
 import Cart from './Components/cart/Cart';
 import Test from './Components/cart/test';
+import Test2 from './Components/cart/test2';
+import Test3 from './Components/productdetails/test';
+
 
 function App() {
   return (
@@ -23,8 +26,11 @@ function App() {
                                           <Route path ="/:id" element={<Products/>} />
                                           <Route path ="/cart" element={<Cart/>} />
                                           <Route path ="/test" element={<Test/>} />
-                                          <Route path ="/test/:id" element={<Test/>} />
+                                          <Route path ="/test/:id" element={<Test/>}/>
                                           <Route path ="/test" element={<Test/>} />
+                                          <Route path ="/test2" element={<Test2/>} />
+                                          <Route path ="/test3/:id" element={<Test3/>} />
+
 
         
         </Route>

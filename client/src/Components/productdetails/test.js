@@ -50,11 +50,7 @@ export default function ProductDetails() {
       const fetchData = async () => {
         const result = await getDetailProd(id);
         setData(result);
-        
-
         setSizes(result.attributes.map((it=>(it.items)[0].value)))
-        
-        
       };
       fetchData();     
     }, []);    
