@@ -31,7 +31,7 @@ export default function ProductDetails() {
      bool=true;}
     }
     if (bool==false){
-      const newItems = JSON.stringify([...items,{product: data, nbr: 1,capcity:"erer"}])
+      const newItems = JSON.stringify([...items,{product: data, nbr: 1,attribute:sizes}])
       localStorage.setItem("mycart",newItems);
     }
    }
