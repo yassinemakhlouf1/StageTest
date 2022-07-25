@@ -76,11 +76,11 @@ setSizes([...sizes])
     <div className="Product-container cartt" >
       <div >
     <div className="itheb ">
-      <div className="image-containerr"><img src={data.gallery[0]} alt=""/></div>
-      <div className="image-containerr"><img src={data.gallery[1]} alt=""/></div>
-      <div className="image-containerr"><img src={data.gallery[2]} alt=""/></div>
+      <div className="image-containerr" style={{  visibility: data.gallery[1]==null ? "hidden":"visible"}}><img src={data.gallery[1]} alt=""/></div>
+      <div className="image-containerr" style={{  visibility: data.gallery[2]==null ? "hidden":"visible"}}><img src={data.gallery[2]} alt=""/></div>
+      <div className="image-containerr" style={{  visibility: data.gallery[3]==null ? "hidden":"visible"}}><img src={data.gallery[3]} alt=""/></div>
     </div>
-    <div className="image-container-Big itheb"><img src={data.gallery[3]} alt=""/></div></div>
+    <div className="image-container-Big itheb"><img className="b_img" src={data.gallery[0]} alt=""/></div></div>
     <div className="Product-container-details">
     
     <div >
@@ -108,7 +108,7 @@ setSizes([...sizes])
       <div className="Size" >Price:</div>
       <div className="pricee">{currency}{data.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       <button className="button" onClick={test}  >ADD TO CART</button>
-      <div className="textDet">{data.description}</div>
+      <div dangerouslySetInnerHTML={{__html: data.description}} className="textDet"></div>
       </div>
     </div>
     </div>
