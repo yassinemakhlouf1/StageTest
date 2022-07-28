@@ -129,18 +129,22 @@ const changeImg=(index,sign)=>{
    }
    
 }
-const [total,SetTotal] =useState();
+const [total,SetTotal] =useState(0);
 const [tax,SetTax] =useState();
 const [nombreProduit,SetNombreProduit] =useState();
 const calculTotal=()=>{
   var nbreProduct=0;
   let  result=0;
+  let  resultt=0;
   // item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())
 for(var i=0;i<items.length;i++){
   nbreProduct+=quantity[i];
-result=result+(parseInt(items[i].product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})()))*quantity[i]);
+  console.log()
+resultt=resultt+(parseInt(items[i].product.prices.map((p) => (() => {if(p.currency.symbol===localStorage.getItem('currency')){
+  console.log(p.amount);console.log(p.currency.symbol);result=result+p.amount;
+  return(p.amount)}})()))*quantity[i]);
 }
-let tax = (result *21)/100;
+let tax = parseFloat((result *21)/100).toFixed(2);
 console.log(tax)
 result=result+tax;
 result=parseFloat(result).toFixed(2);
