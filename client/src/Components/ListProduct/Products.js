@@ -42,7 +42,7 @@ export default function Products(props) {
     <div  className= {
       (() => {
           if(product.inStock===false) {return('card-container-blurred')}
-          //else if(product.cart===true) {return('selected-card-container')}
+          else if(products.includes(product.id)) {return('selected-card-container')}
           else {return('card-container')}
         }
       )()  

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Components/cart/Cart';
 import "./Header.css";
-import useModal from "./useModal.js"
-import Modal from "./cartOverlay.js";
-
 export default function Header() {
   const [currency,Setcurrency]=useState('$');
   // const [mycart, setMyCarte] = useState([]);
@@ -12,10 +9,6 @@ export default function Header() {
   const [link1, setLink1] = useState('');
   const [link2, setLink2] = useState('p1');
   const [link3, setLink3] = useState('p1');
-
-  const { isShowing: isCartOverlayShowed, toggle: toggleCartOverlay } = useModal();
- 
-
 
 
   const  SetactiveLink = (val)=>{
@@ -95,18 +88,10 @@ export default function Header() {
             <option  value="$">USD</option>
             <option value="£" >GBP</option>
             <option value="A$"  >AUD</option>
-            <option value="¥" >JPY</option>
+            <option value="¥"  >JPY</option>
             <option value="₽"  >RUB</option>
-        </select> <a >
-        <Modal
-          isShowing={isCartOverlayShowed}
-          hide={toggleCartOverlay}
-          title="Cart:"
-        >
-           //add cart element here
-        </Modal>
-        <img onClick={toggleCartOverlay} src="/Vector.png" alt=""/>
-        </a>
+        </select><a href='/cart'>
+        <img src="/Vector.png" alt=""/></a>
         </div>
       </div>
   {/* <div className='cart-div'><Cart/></div> */}
