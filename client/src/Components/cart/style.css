@@ -242,3 +242,6 @@ display: inline-block;
   height: 36px;
   margin-right: 10px;
 }
+.max {
+  max-width: 100%;
+}

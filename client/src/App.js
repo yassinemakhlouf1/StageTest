@@ -10,7 +10,6 @@ import Cart from './Components/cart/Cart';
 import Test from './Components/cart/test';
 import Test2 from './Components/cart/test2';
 import Test3 from './Components/productdetails/test';
-import Testpopup from './popup/Testpopup';
 
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
 
         
         </Route>
-        <Route path='/popup' element={<Testpopup/>}></Route>
           
         </Routes>
       </BrowserRouter>
