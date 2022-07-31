@@ -39,11 +39,11 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
 
             .modal-wrapper {
               position: fixed;
-              top: -310px;
+              // top: -310px;
               left: 550px;
               z-index: 1050;
               width: 100%;
-              height: 100%;
+              
               overflow-x: hidden;
               overflow-y: auto;
               outline: 0;
@@ -56,9 +56,7 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
               background: #fff;
               position: relative;
               margin: auto;
-              border-radius: 5px;
               max-width: 325px;
-              max-height: 677px;
               width: 100%;
               padding: 1rem;
             }

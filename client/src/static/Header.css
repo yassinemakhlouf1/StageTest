@@ -174,3 +174,114 @@ flex-grow: 0;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
+
+.poptitleeC{
+  font-size: 16px;
+  margin-bottom: 2%;
+}
+.poppriceC{
+  font-weight: 500;
+font-size: 16px;
+margin-bottom: 2%;
+}
+.popSizeC{
+font-weight: 400;
+font-size: 14px;
+text-transform: uppercase;
+margin-bottom: 2%;
+display: flex;
+align-items: center;
+text-align: center;
+color: #1D1F22;
+}
+.popColorSelect{
+  box-sizing: border-box;
+  border: 1px solid #1D1F22;
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}
+
+.popBox{
+  
+  text-transform: uppercase;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  border: 1px solid #1D1F22;
+  display: flex;
+  justify-content: center;
+  align-items :center;
+  
+  }
+  .popbuttonC{
+    height: 24px;
+    width: 24px;
+    background: #FFFFFF;
+    border: 1px solid #1D1F22;
+    /* font-size: xx-large; */
+    font-family: none;
+    
+    }
+    .popimg{
+      position: relative;
+      width: 100%;
+      max-height: 230px;
+    }
+    .pop-mg-top{
+      margin-top: 25px;   }
+      .poptotal{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+font-size: 16px;
+line-height: 160%;
+      }
+      .pop-btn{
+        width: 160px;
+height: 43px;  
+background: #5ECE7B;
+color: #FFFFFF;
+cursor: pointer;
+border: 0px solid #ffffff;
+      }
+      .pop-lf-btn{
+        background: #ffffff;
+        color: #000000 !important;
+border: 1px solid #000000;
+
+      }
+      .mg-left{
+        margin-left: 12px;
+      }
+      .pop-div-btn{
+        display: flex;
+        margin-top: 15px;
+      }.mg-top{
+        margin-top: 5px;
+      }
+
+      
+
+      .Quantity {
+        margin-left: 16px;
+        position: absolute;
+        color: white;
+        height: 14px;
+        width: 14px;
+        font-size: small;
+        background-color: #000000;
+        border-radius: 100%;
+        /* bottom: 1px; */
+        top: 2%;
+    }
+.Quantity-nb{
+  position: absolute;
+  right: 0.5%;
+  width: 15px;
+  bottom: 1pt;
+  height: 1pc;
+
+  /* background-color: #5ECE7B; */
+}
