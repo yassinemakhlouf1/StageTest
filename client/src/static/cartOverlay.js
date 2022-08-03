@@ -35,11 +35,11 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
               height: 100vh;
               z-index: 1040;
               background-color: rgba(0, 0, 0, 0.5);
+              
             }
 
             .modal-wrapper {
               position: fixed;
-              // top: -310px;
               left: 550px;
               z-index: 1050;
               width: 100%;
@@ -49,6 +49,7 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
               outline: 0;
               display: flex;
               align-items: center;
+              
             }
 
             .modal {
@@ -56,9 +57,10 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
               background: #fff;
               position: relative;
               margin: auto;
-              max-width: 325px;
-              width: 100%;
               padding: 1rem;
+              overflow-y: auto;
+              height:677px;
+              width: 325px;
             }
 
             .modal-header {

@@ -54,14 +54,12 @@ export default function ProductDetails() {
         if(!result?.inStock){
           setInstock(false)
         }
-        console.log("result?.inStock")
-        console.log(instock)
       };
       fetchData();     
     }, []);    
 
     if(sizes)
-    {console.log(sizes);}
+    {}
 
 
 
@@ -96,20 +94,18 @@ const ImgDisplay = (i,e) =>{
       <div className="Soustitle">{data.name}</div>
       <div >
         
-      {data.attributes.map((attribute,i)=>(<><div   className='Size'>{attribute.name}:</div>
+      {data.attributes.map((attribute,i)=>(<div key={attribute.name+"proDetail"+i}><div   className='Size'>{attribute.name}:</div>
               <div className="SizeBox" >
               {attribute.items.map((attribute_item,ii)=>{ 
                 if (attribute.name.toLowerCase().trim()=="color") {
-                 return <button onClick={(e)=>{SetSize(attribute_item.value,i); }} 
-        style={{background: attribute_item.value,border: sizes[i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)" }} className ="ColorBox1"></button>
-      }else{
-        return <button  onClick={(e)=>{SetSize(attribute_item.value,i);}} 
-        style={{background: sizes[i]==attribute_item.value ? "black" : "white", color: sizes[i]==attribute_item.value ? "white":"black"}} className="Box">{attribute_item.value}</button>
-                        }
-                     
+                  return <button onClick={(e)=>{SetSize(attribute_item.value,i); }} 
+        style={{background: attribute_item.value,border: sizes[i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)" }} className ="ColorBox1" key={attribute_item.value+"proDetail"+ii}></button>
+                }else{
+                  return <button  onClick={(e)=>{SetSize(attribute_item.value,i);}} 
+        style={{background: sizes[i]==attribute_item.value ? "black" : "white", color: sizes[i]==attribute_item.value ? "white":"black"}} className="Box" key={attribute_item.value+"proDetail"+ii}>{attribute_item.value}</button>
+                }
                       })}
-        {console.log(attribute.name.toLowerCase().trim())}
-                </div></>
+                </div></div>
 
         ))}
       </div>

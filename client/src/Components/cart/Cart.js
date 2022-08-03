@@ -4,11 +4,9 @@ import "./style.css";
 export default function Cart() {
 
 
-  const [count, setCount] = useState(1);
+const [count, setCount] = useState(1);
 
-  var currency = localStorage.getItem('currency');
-  const [taille,setTaille]=useState();
-  var c = -1
+var currency = localStorage.getItem('currency');
 var left= '<';
 var right='>';
 const   [items, setItems] = useState(JSON.parse(localStorage.getItem("mycart")|| null));
@@ -19,7 +17,6 @@ useEffect(()=>{
   for (var i= 0 ;i<items.length;i++){
     setCnt([...cnt,cnt[i]=items[i].nbr]);
   }
-  console.log(cnt);
   calculTotal();
 },[]);
 
@@ -56,10 +53,8 @@ localStorage.setItem("mycart",newItems);
     setQuantity([...quantity])}
     else
     {
-      console.log(items);
      var aa=items[i].product.id
      const newItems=JSON.stringify(items.filter(data=>data.product.id != aa))
-     console.log(newItems);
 
     localStorage.removeItem("mycart")
     localStorage.setItem("mycart",newItems);
@@ -98,12 +93,10 @@ const calculTotal=()=>{
   let  result=0;
   let  resultt=0;
   let  x=0;
-  // item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())
 for(var i=0;i<items.length;i++){
   nbreProduct+=quantity[i];
-  console.log()
 x=x+(parseInt(items[i].product.prices.map((p) => (() => {if(p.currency.symbol===localStorage.getItem('currency')){
-  console.log(p.amount);console.log(p.currency.symbol);result=p.amount;
+  result=p.amount;
   return(p.amount)}})()))*quantity[i]);
   resultt=(resultt+result)*quantity[i];
 
@@ -117,10 +110,10 @@ SetNombreProduit(nbreProduct);
 }
   return (
     <div className='cart-container max'>    <div className='cart max'>Cart</div>
-    <hr/>{console.log(items)}
+    <hr/>
     {items?.map((item,index)=>(
       
-    <div key={index} >
+    <div key={item.product.name} >
  
     <div className='cart-container-detail max' >
         
@@ -128,30 +121,21 @@ SetNombreProduit(nbreProduct);
       <div className="titleeC max" >{item.product.brand}</div>
       <div className="SoustitleC max">{item.product.name}</div>
       <div className="priceC max">{currency}{item.product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
-        {/* <div className="BoxC">XS</div>
-        <div className="BoxC">S</div>
-        <div className="BoxC">L</div>
-        <div className="BoxC">XL</div> */}
 
         <div style= {{display : "none"}}>{}</div>
-        {console.log(index)}
-        {console.log(item.attribute.map((attribute,i)=>({attribute})))}
-
-
-        {item.product.attributes.map((attribute,i)=>(<><div className='SizeC max'>{attribute.name}:</div>
+        {item.product.attributes.map((attribute,i)=>(<div key={attribute.name+"_Cart_"+i}><div className='SizeC max'>{attribute.name}:</div>
               <div className="SizeBoxC max" >
-              {attribute.items.map((attribute_item,ii)=>{ c=c+1
+              {attribute.items.map((attribute_item,ii)=>{
                 if (attribute.name.toLowerCase().trim()=="color") {
-                 return <button onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
-        style={{background: attribute_item.value,border: sizes[index][i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)"}}className ="max ColorSelect"></button>
+                 return <button onClick={(e)=>{SetSize(attribute_item.value,index,i,ii) }} 
+        style={{background: attribute_item.value,border: sizes[index][i]==attribute_item.value ? "2px solid rgba(94, 206, 123, 1)":"1px solid rgb(0,0,0)"}}className ="max ColorSelect" key={attribute_item.value+"_Cart_"+ii}></button>
       }else{
-        return <button  onClick={(e)=>{SetSize(attribute_item.value,index,i,ii);console.log(sizes) }} 
-                style={{background: sizes[index][i]===attribute_item.value ? "black" : "white", color: sizes[index][i]===attribute_item.value ? "white":"black"}} className="Box max">{attribute_item.value}</button>
+        return <button  onClick={(e)=>{SetSize(attribute_item.value,index,i,ii) }} 
+                style={{background: sizes[index][i]===attribute_item.value ? "black" : "white", color: sizes[index][i]===attribute_item.value ? "white":"black"}} className="Box max" key={attribute_item.value+"_Cart_"+ii}>{attribute_item.value}</button>
                         }
                      
                       })}
-        {console.log(attribute.name.toLowerCase().trim())}
-                </div></>
+                </div></div>
 
         ))}
         
