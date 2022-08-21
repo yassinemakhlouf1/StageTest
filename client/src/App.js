@@ -5,16 +5,15 @@ import { Outlet } from 'react-router-dom';
 import Header from './static/Header';
 import ProductDetails from './Components/productdetails/ProductDetails';
 import Products from './Components/ListProduct/Products';
-import ProductCard from './Components/ListProduct/ProductCard';
 import Cart from './Components/cart/Cart';
-import Test from './Components/cart/test';
-import Test2 from './Components/cart/test2';
-import Test3 from './Components/productdetails/test';
+import {CartProvider} from "./context/Context"
+
 
 
 function App() {
   return (
   <>
+  <CartProvider>
   <BrowserRouter>
     <Routes >
       <Route path="/" element={<Layout />} >
@@ -25,11 +24,6 @@ function App() {
       <Route path ="/" element={<Products/>} />
       <Route path ="/:id" element={<Products/>} />
       <Route path ="/cart" element={<Cart/>} />
-      <Route path ="/test" element={<Test/>} />
-      <Route path ="/test/:id" element={<Test/>}/>
-      <Route path ="/test" element={<Test/>} />
-      <Route path ="/test2" element={<Test2/>} />
-      <Route path ="/test3/:id" element={<Test3/>} />
 
 
         
@@ -37,6 +31,7 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

@@ -2,13 +2,14 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 120%; 
-  overflow: hidden;
   background: hsl(0, 0%, 100%);
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
     
-    margin-bottom: 80px ;
-      
+  position:sticky;
+  top: 0;
+  
+  z-index: 1;
 }
 .divH {
   font-weight: 600;
