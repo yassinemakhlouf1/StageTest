@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-const handleClick = (e,h) => { if(e && e.stopPropagation) e.stopPropagation(); h.toggle()}
+const handleClick = (e,h) => { if(e && e.stopPropagation) e.stopPropagation(); }
 const Modal = ({ isShowing, hide, title, ...props }) =>
   isShowing
     ? ReactDOM.createPortal(

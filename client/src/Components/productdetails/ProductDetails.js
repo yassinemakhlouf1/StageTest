@@ -112,7 +112,7 @@ const ImgDisplay = (i,e) =>{
       <div className="Size" >Price:</div>
       <div className="pricee">{currency}{data.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>
       <div className="txtOutStock" hidden={instock}>OUT OF STOCK!</div>
-      <button className="button" hidden={!instock}  onClick={test}   >ADD TO CART</button>
+      <a href="../cart"><button className="button" hidden={!instock}   onClick={test}   >ADD TO CART</button></a>
       
       <div dangerouslySetInnerHTML={{__html: data.description}} className="textDet"></div>
       </div>

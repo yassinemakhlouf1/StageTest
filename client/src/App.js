@@ -6,12 +6,14 @@ import Header from './static/Header';
 import ProductDetails from './Components/productdetails/ProductDetails';
 import Products from './Components/ListProduct/Products';
 import Cart from './Components/cart/Cart';
+import {CartProvider} from "./context/Context"
 
 
 
 function App() {
   return (
   <>
+  <CartProvider>
   <BrowserRouter>
     <Routes >
       <Route path="/" element={<Layout />} >
@@ -29,6 +31,7 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </>
   );
 }
