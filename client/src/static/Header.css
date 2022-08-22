@@ -202,12 +202,17 @@ color: #1D1F22;
   height: 16px;
   margin-right: 2px;
 }
-
+.popImage-Countainer{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 138px;
+}
 .popBox{
   
   text-transform: uppercase;
   box-sizing: border-box;
-  width: 24px;
+  /* width: 24px; */
   height: 24px;
   font-size: 14px;
   border: 1px solid #1D1F22;

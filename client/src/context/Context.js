@@ -52,8 +52,10 @@ const [img,setImg] = useState((items?.map((item,i)=>(item?.product.gallery.map((
       
           localStorage.removeItem("mycart")
           localStorage.setItem("mycart",newItems);
-          items.splice(i,1);
-      
+          items.splice((i),1);
+          img.splice(i,1);
+          sizes.splice(i,1);
+          quantity.splice(i,1);
           }
       
         }

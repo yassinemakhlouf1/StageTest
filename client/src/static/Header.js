@@ -176,7 +176,7 @@ export default function Header() {
       <p className='pCart max'>{quantity[index]}</p>
       <button className='popbuttonC max ' onClick={(e) => {increment(quantity[index],index,"-")}}>-</button>
     </div>
-    <div className="image-containerC max">
+    <div className="popImage-Countainer      max">
       <img className='popimg' src={img[index][0]}  alt=""/>
       </div>
     
