@@ -40,7 +40,7 @@ export default function Products(props) {
     <a  href={"/product/"+product.id}>
     <div  className= {
       (() => {
-          if(product.inStock===+false) {return('card-container-blurred')}
+          if(product.inStock===false) {return('card-container-blurred')}
           else if(products.includes(product.id)) {return('selected-card-container')}
           else {return('card-container')}
         }
@@ -48,7 +48,7 @@ export default function Products(props) {
         }   key={product.id}>
       <img className='image-container' src={product.gallery[0]} alt='' />
       { products.includes(product.id) && <img className="cart-image" src="./incart.png" alt='' />}
-      { product.inStock === +false && <div className="oos-container">OUT OF STOCK</div>}
+      { product.inStock === false && <div className="oos-container">OUT OF STOCK</div>}
       <div className='content-container'>
       <div className='title'>{product.name}</div>
       <div className='price'>{currency}{product.prices.map((p) => (() => {if(p.currency.symbol===currency){return(p.amount)}})())}</div>

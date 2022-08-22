@@ -58,10 +58,15 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
               position: relative;
               margin: auto;
               padding: 1rem;
+              
               overflow-y: auto;
+              
               height:677px;
               width: 325px;
             }
+            ::-webkit-scrollbar {
+              width: 0;  /* Remove scrollbar space */
+          }
 
             .modal-header {
               display: flex;
